@@ -5,14 +5,14 @@
 
 To get started you can:
 
-Download [here](https://github.com/adlerluiz/CryptoBar/releases) the latest release
+Download [here](https://github.com/isaccanedo/CryptoBar) the latest release
 
 or
 
 Clone this repository locally:
 
 ``` bash
-git clone https://github.com/adlerluiz/CryptoBar.git
+git clone https://github.com/isaccanedo/CryptoBar
 ```
 
 Install dependencies with npm:
@@ -26,12 +26,3 @@ And finally:
 ```
 npm start  
 ```
-
-## To contribute
-
-See [Angular-Electron](https://github.com/maximegris/angular-electron) to learn more commands and enjoy =D.
-
-## Contributors
-[adlerluiz](https://github.com/adlerluiz)
-<br />
-[rickinbsb](https://github.com/rickinbsb)
