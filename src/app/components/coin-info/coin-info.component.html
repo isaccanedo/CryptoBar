@@ -1,0 +1,104 @@
+<div class="drag window-border">
+
+  <div class="no-drag" style="position: absolute; top: 6px; right: 10px;">
+    <i class="material-icons tiny" style="cursor: pointer;" (click)="close()">close</i>
+  </div>
+
+  <div class="row center" style="margin-top: 27px;">
+    <img src="https://s2.coinmarketcap.com/static/img/coins/64x64/{{ coin['id'] }}.png" width="50" class="rounded" style="background: #FFF; padding: 1px;" />
+    <br />
+    {{ coin['name'] }} ({{ coin['symbol'] }})
+    <br />
+    <span class="grey-text">#{{ coin['rank'] }}</span>
+  </div>
+
+  <div class="row no-drag" style="height: 32.6vh; width: 100vw;">
+
+    <div class="center" *ngIf="loadingChart && !errorLoadChart" style="padding-top: 50px !important;">
+      <div class="preloader-wrapper small active">
+        <div class="spinner-layer spinner-blue-only">
+          <div class="circle-clipper left">
+            <div class="circle"></div>
+          </div><div class="gap-patch">
+          <div class="circle"></div>
+        </div><div class="circle-clipper right">
+          <div class="circle"></div>
+        </div>
+        </div>
+      </div>
+    </div>
+
+    <canvas *ngIf="!errorLoadChart" id="chart"></canvas>
+
+    <div *ngIf="errorLoadChart" class="center-align grey-text"><br /><br /> Failed to load chart data</div>
+  </div>
+
+  <div class="row">
+
+    <div class="col s4 center no-drag pointer" [ngClass]="{ selected: defaultTimeChart === 1 }" (click)="changeChartTime( 1 )">
+      <i class="material-icons" [ngClass]="{ 'green-text': coin['quotes']['USD']['percent_change_1h'] > 0, 'red-text': coin['quotes']['USD']['percent_change_1h'] < 0 }">
+        {{ coin['quotes']['USD']['percent_change_1h'] > 0 ? "arrow_drop_up" : "arrow_drop_down" }}
+      </i>
+      <sup style="font-size: 13px;">{{ coin['quotes']['USD']['percent_change_1h'] }}%</sup>
+      <br />
+      <span class="grey-text">1h</span>
+    </div>
+
+    <div class="col s4 center no-drag pointer" [ngClass]="{ selected: defaultTimeChart === 24 }" (click)="changeChartTime( 24 )">
+      <i class="material-icons" [ngClass]="{ 'green-text': coin['quotes']['USD']['percent_change_24h'] > 0, 'red-text': coin['quotes']['USD']['percent_change_24h'] < 0 }">
+        {{ coin['quotes']['USD']['percent_change_24h'] > 0 ? "arrow_drop_up" : "arrow_drop_down" }}
+      </i>
+      <sup style="font-size: 13px;">{{ coin['quotes']['USD']['percent_change_24h'] }}%</sup>
+      <br />
+      <span class="grey-text">24h</span>
+    </div>
+
+    <div class="col s4 center no-drag pointer" [ngClass]="{ selected: defaultTimeChart === 168 }" (click)="changeChartTime( 168 )">
+      <i class="material-icons" [ngClass]="{ 'green-text': coin['quotes']['USD']['percent_change_7d'] > 0, 'red-text': coin['quotes']['USD']['percent_change_7d'] < 0 }">
+        {{ coin['quotes']['USD'].percent_change_7d > 0 ? "arrow_drop_up" : "arrow_drop_down" }}
+      </i>
+      <sup style="font-size: 13px;">{{ coin['quotes']['USD']['percent_change_7d'] }}%</sup>
+      <br />
+      <span class="grey-text">1w</span>
+    </div>
+
+  </div>
+
+  <div class="row">
+
+    <div class="col s6 center">
+      {{ coin['quotes']['USD']['price'] }}
+      <br />
+      <span class="grey-text">USD</span>
+    </div>
+
+    <div class="col s6 center">
+      {{ coin['quotes']['BTC']['price'] }}
+      <br />
+      <span class="grey-text">BTC</span>
+    </div>
+
+  </div>
+
+  <!--table style="font-size: 8px;">
+    <tbody>
+      <tr>
+        <td>Volume 24h (usd)</td>
+        <th class="right-align">{{ coin['24h_volume_usd'] }}</th>
+      </tr>
+      <tr>
+        <td>Market cap (usd)</td>
+        <th class="right-align">{{ coin['market_cap_usd'] }}</th>
+      </tr>
+      <tr>
+        <td>Total Supply</td>
+        <th class="right-align">{{ coin['total_supply'] }}</th>
+      </tr>
+      <tr>
+        <td>Available Supply</td>
+        <th class="right-align">{{ coin['available_supply'] }}</th>
+      </tr>
+    </tbody>
+  </table-->
+
+</div>
