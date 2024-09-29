@@ -1,4 +1,4 @@
-# CryptoBar is a way to check variations on your cryptocurrencies and tokens on a discreet bar.
+## CryptoBar is a way to check variations on your cryptocurrencies and tokens on a discreet bar.
 ![Pic1](src/assets/product/cryptobar.png)
 
 ## Getting Started
